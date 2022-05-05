@@ -4,11 +4,11 @@ class MyAppbar extends StatelessWidget  implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: 'ITET Sciascia App Mobile',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'ITET Sciascia App Mobile'),
+      title: Image.asset('assets/logo.jpeg', fit: BoxFit.cover,),
+
     );
   }
+
+  @override
+  Size preferredSize = Size(100, 100);
 }

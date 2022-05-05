@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:itet_sciascia_app_mobile/appbar.dart';
 
 void main() => runApp(MyApp());
 
@@ -38,10 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: AppBar(
-
-        title: Text(widget.title),
-      ),
+      appBar: MyAppbar(),
       body: Center(
 
         child: Column(
