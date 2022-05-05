@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:itet_sciascia_app_mobile/appbar.dart';
 
+import 'drawer.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -55,8 +57,9 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text("volte")
           ],
-        ),
+        )
       ),
+      drawer: Mydrawer(),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
