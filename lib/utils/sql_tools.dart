@@ -51,7 +51,26 @@ class SQLTools {
 
   // modificare un progetto
   static Future<int> modificaProgetto(
-      int id, String title, String? descrption) async {}
+      int id, String titolo, String? descrizione) async {
+    // Get a reference to the database.
+    final database = await SQLTools.connetti();
+    final nuovoProgetto = {
+      'titolo':titolo,
+      'descrizione':descrizione,
+      'creato_a':DateTime.now().toString()
+
+    }
+    // Update the given Dog.
+    final risultato = await database.update(
+      'dogs',
+      nuovoProgetto,
+      // Ensure that the Dog has a matching id.
+      where: 'id = ?',
+      // Pass the Dog's id as a whereArg to prevent SQL injection.
+      whereArgs: [id],
+    );
+    return risultato;
+  }
 
 // eliminare un progetto
   static Future<void> eliminaProgetto(int id) async {}
