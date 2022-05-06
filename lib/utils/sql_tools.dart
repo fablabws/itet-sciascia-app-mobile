@@ -14,6 +14,7 @@ class SQLTools {
     """;
     await database.execute(sqlQuery);
   }
+  static Future<void> creaTabella(sql_lite.Database database) async {}
 
   // questa funzione si connette ad un database e ce lo restituisce
   static Future<sql_lite.Database> connetti() async {
@@ -25,6 +26,7 @@ class SQLTools {
       },
     );
   }
+  static Future<sql_lite.Database> db() async {}
 
   // legge tutti i progetti dal database
   static Future<List<Map<String, dynamic>>> leggiProgetti() async {
@@ -33,12 +35,25 @@ class SQLTools {
   }
 
   // creare un progetto
-  static Future<int> creaProgetto(String title, String? descrption) async {}
+  class Repository{
+  static Future<int> creaProgetto(String title, String description) async {
+  final sql = """INSERT INTO progetti(
+                    $title,
+                    $description)
+                  VALUES (?,?,?)
+                  """;
+                  List<dynamic> parametri = [title, descrption]; //lista di parametri 
+                  await db.rawInsert(sql, parametri); //si occupa di costruire la query ed eseguirla
+
+ 
+  }
+  }
 
   // modificare un progetto
   static Future<int> modificaProgetto(
       int id, String title, String? descrption) async {}
 
-  // eliminare un progetto
+// eliminare un progetto
   static Future<void> eliminaProgetto(int id) async {}
 }
+
