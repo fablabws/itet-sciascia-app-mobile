@@ -4,8 +4,9 @@ class MyAppbar extends StatelessWidget  implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Image.asset('assets/logo.jpeg', fit: BoxFit.cover,),
-
+      title: Image.asset('assets/appbar.png', fit: BoxFit.cover,),
+      centerTitle: true,
+      toolbarHeight: 100.0,
     );
   }
 
