@@ -7,6 +7,7 @@ class MyAppbar extends StatelessWidget  implements PreferredSizeWidget {
       title: Image.asset('assets/appbar.png', fit: BoxFit.cover,),
       centerTitle: true,
       toolbarHeight: 100.0,
+      backgroundColor: Colors.blue,
     );
   }
 
