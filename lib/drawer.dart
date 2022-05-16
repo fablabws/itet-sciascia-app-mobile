@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:itet_sciascia_app_mobile/pagine/chi_siamo.dart';
 import 'package:itet_sciascia_app_mobile/pagine/homepage.dart';
+import 'package:itet_sciascia_app_mobile/pagine/i_miei_progetti.dart';
 
 class Mydrawer extends StatelessWidget {
   final coloreSfondo = Colors.blue;
@@ -20,7 +22,21 @@ class Mydrawer extends StatelessWidget {
               MaterialPageRoute(builder: (context) => MyHomePage())
                 );
               }
-            )
+            ),
+        _createDrawerItem(text: 'Chi Siamo', onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ChiSiamo())
+          );
+        }
+        ),
+        _createDrawerItem(text: 'I miei Progetti', onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => IMieiProgetti())
+          );
+        }
+        )
           ],
       )
     )
