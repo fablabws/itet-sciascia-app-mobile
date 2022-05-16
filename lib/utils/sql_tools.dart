@@ -2,7 +2,17 @@ import 'package:flutter/foundation.dart';
 import 'package:sqflite/sqflite.dart' as sql_lite;
 
 class SQLTools {
-  static Future<void> creaTabella(sql_lite.Database database) async {}
+  // questa funzione esegue una query che crea una tabella (verrà eseguito solo la prima volta)
+  static Future<void> creaTabella(sql_lite.Database database) async {
+    String sqlQuery = """CREATE TABLE progetti(
+        id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+        titolo TEXT,
+        descrizione TEXT,
+        creato_a TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+      )
+    """;
+    await database.execute(sqlQuery);
+  }
 
   static Future<sql_lite.Database> db() async {}
 
