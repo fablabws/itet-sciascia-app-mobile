@@ -14,7 +14,6 @@ class SQLTools {
     """;
     await database.execute(sqlQuery);
   }
-  static Future<void> creaTabella(sql_lite.Database database) async {}
 
   // questa funzione si connette ad un database e ce lo restituisce
   static Future<sql_lite.Database> connetti() async {
@@ -26,7 +25,8 @@ class SQLTools {
       },
     );
   }
-  static Future<sql_lite.Database> db() async {}
+
+  // static Future<sql_lite.Database> db() async {}
 
   // legge tutti i progetti dal database
   static Future<List<Map<String, dynamic>>> leggiProgetti() async {}
@@ -40,4 +40,3 @@ class SQLTools {
   // eliminare un progetto
   static Future<void> eliminaProgetto(int id) async {}
 }
-
