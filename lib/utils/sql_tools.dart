@@ -32,44 +32,12 @@ class SQLTools {
   static Future<List<Map<String, dynamic>>> leggiProgetti() async {}
 
   // creare un progetto
-  class Repository{
-  static Future<int> creaProgetto(String title, String description) async {
-  final sql = """INSERT INTO progetti(
-                    $title,
-                    $description)
-                  VALUES (?,?,?)
-                  """;
-                  List<dynamic> parametri = [title, descrption]; //lista di parametri 
-                  await db.rawInsert(sql, parametri); //si occupa di costruire la query ed eseguirla
-
- 
-  }
-  }
+  static Future<int> creaProgetto(String title, String description) async {}
 
   // modificare un progetto
-  static Future<int> modificaProgetto(
-      int id, String titolo, String? descrizione) async {
-    // Get a reference to the database.
-    final database = await SQLTools.connetti();
-    final nuovoProgetto = {
-      'titolo':titolo,
-      'descrizione':descrizione,
-      'creato_a':DateTime.now().toString()
+  static Future<int> modificaProgetto(int id, String titolo, String? descrizione) async {}
 
-    }
-    // Update the given Dog.
-    final risultato = await database.update(
-      'dogs',
-      nuovoProgetto,
-      // Ensure that the Dog has a matching id.
-      where: 'id = ?',
-      // Pass the Dog's id as a whereArg to prevent SQL injection.
-      whereArgs: [id],
-    );
-    return risultato;
-  }
-
-// eliminare un progetto
+  // eliminare un progetto
   static Future<void> eliminaProgetto(int id) async {}
 }
 
