@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'ITET Sciascia App Mobile',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.yellow,
       ),
       home: MyHomePage(title: 'ITET Sciascia App Mobile'),
     );
