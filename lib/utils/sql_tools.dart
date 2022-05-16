@@ -5,7 +5,7 @@ import 'package:path/path.dart';
 class SQLTools {
   // questa funzione esegue una query che crea una tabella (verrà eseguito solo la prima volta)
   static Future<void> creaTabella(sql_lite.Database database) async {
-    final sqlQuery = """CREATE TABLE progetti(
+    String sqlQuery = """CREATE TABLE progetti(
         id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
         titolo TEXT,
         descrizione TEXT,
@@ -29,10 +29,7 @@ class SQLTools {
   static Future<sql_lite.Database> db() async {}
 
   // legge tutti i progetti dal database
-  static Future<List<Map<String, dynamic>>> leggiProgetti() async {
-    final database = await SQLTools.connetti();
-    return database.query("progetti", orderBy: "id");
-  }
+  static Future<List<Map<String, dynamic>>> leggiProgetti() async {}
 
   // creare un progetto
   class Repository{
