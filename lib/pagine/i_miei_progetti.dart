@@ -34,12 +34,13 @@ class _IMieiProgettiState extends State<IMieiProgetti> {
   }
 
   void _showForm(int? id) async {
-    // if (id != null) {
-    //   final existingJournal =
-    //       _journals.firstWhere((element) => element['id'] == id);
-    //   _titleController.text = existingJournal['title'];
-    //   _descriptionController.text = existingJournal['description'];
-    // }
+    if (id != null) {
+      final existingItem =
+          _items.firstWhere((element) => element['id'] == id);
+      
+      _titleController.text = existingItem['title'];
+      _descriptionController.text = existingItem['description'];
+    }
 
     showModalBottomSheet(
         context: context,
@@ -72,14 +73,11 @@ class _IMieiProgettiState extends State<IMieiProgetti> {
                   ),
                   ElevatedButton(
                     onPressed: () async {
-                      // Save new journal
-                      if (id == null) {
+                      if (id != null) {
+                        await _updateItem(id);
+                      } else {
                         await _addItem();
                       }
-
-                      // if (id != null) {
-                      //   await _updateItem(id);
-                      // }
 
                       _titleController.text = '';
                       _descriptionController.text = '';
@@ -97,6 +95,20 @@ class _IMieiProgettiState extends State<IMieiProgetti> {
     await SQLHelper.createItem(
         _titleController.text, _descriptionController.text);
     
+    _refreshItems();
+  }
+
+  Future<void> _updateItem(int id) async {
+    await SQLHelper.updateItem(
+        id, _titleController.text, _descriptionController.text);
+    _refreshItems();
+  }
+
+  void _deleteItem(int id) async {
+    await SQLHelper.deleteItem(id);
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+      content: Text('Eliminato un elemento correttamente!'),
+    ));
     _refreshItems();
   }
 
@@ -121,15 +133,15 @@ class _IMieiProgettiState extends State<IMieiProgetti> {
                       width: 100,
                       child: Row(
                         children: [
-                          // IconButton(
-                          //   icon: const Icon(Icons.edit),
-                          //   onPressed: () => _showForm(_journals[index]['id']),
-                          // ),
-                          // IconButton(
-                          //   icon: const Icon(Icons.delete),
-                          //   onPressed: () =>
-                          //       _deleteItem(_journals[index]['id']),
-                          // ),
+                          IconButton(
+                            icon: const Icon(Icons.edit),
+                            onPressed: () => _showForm(_items[index]['id']),
+                          ),
+                          IconButton(
+                            icon: const Icon(Icons.delete),
+                            onPressed: () =>
+                                _deleteItem(_items[index]['id']),
+                          ),
                         ],
                       ),
                     )
